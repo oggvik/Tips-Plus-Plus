@@ -1,9 +1,9 @@
-package net.darkhax.tips.data.tip;
+package mods.oggvik.tipsplusplus.data.tip;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import net.darkhax.tips.TipsAPI;
+import mods.oggvik.tipsplusplus.TipsAPI;
 import net.minecraft.util.ResourceLocation;
 
 /**

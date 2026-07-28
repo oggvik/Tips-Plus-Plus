@@ -1,4 +1,4 @@
-package net.darkhax.tips.gui;
+package mods.oggvik.tipsplusplus.gui;
 
 import java.awt.TextComponent;
 import java.util.ArrayList;
@@ -11,8 +11,8 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import net.darkhax.bookshelf.util.RenderUtils;
-import net.darkhax.tips.Tips;
-import net.darkhax.tips.data.tip.ITip;
+import mods.oggvik.tipsplusplus.TipsPlusPlus;
+import mods.oggvik.tipsplusplus.data.tip.ITip;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.math.vector.Matrix4f;
@@ -40,7 +40,7 @@ public class ListEntryTip extends ListEntry {
     @Override
     public void render (MatrixStack matrix, int index, int yStart, int xStart, int width, int height, int mouseX, int mouseY, boolean isMouseOver, float partialTicks) {
         
-        if (!Tips.CFG.canLoadTip(this.tip.getId())) {
+        if (!TipsPlusPlus.CFG.canLoadTip(this.tip.getId())) {
             
             drawGradient(matrix, xStart - 2, yStart + 2, width + 2, height - 6, 0x40ff0000, 0xff700000, 0xff600000);
         }
@@ -57,7 +57,7 @@ public class ListEntryTip extends ListEntry {
         tooltip.add(new TranslationTextComponent("gui.tips.list.entry.tip_id", this.tip.getId().toString()));
         tooltip.add(new TranslationTextComponent("gui.tips.list.entry.added_by", getModName(this.tip.getId().getNamespace())).mergeStyle(TextFormatting.BLUE));
         
-        if (!Tips.CFG.canLoadTip(this.tip.getId())) {
+        if (!TipsPlusPlus.CFG.canLoadTip(this.tip.getId())) {
             tooltip.add(new TranslationTextComponent("gui.tips.list.entry.disabled").mergeStyle(TextFormatting.RED));
         }
         

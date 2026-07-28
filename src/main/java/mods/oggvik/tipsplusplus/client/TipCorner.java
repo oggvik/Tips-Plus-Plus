@@ -1,4 +1,4 @@
-package net.darkhax.tips.client;
+package mods.oggvik.tipsplusplus.client;
 
 /**
  * A screen corner that can anchor rendered tips.

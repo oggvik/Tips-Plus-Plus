@@ -1,11 +1,11 @@
-package net.darkhax.tips.data.tip;
+package mods.oggvik.tipsplusplus.data.tip;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import net.darkhax.bookshelf.serialization.Serializers;
-import net.darkhax.tips.Tips;
-import net.darkhax.tips.TipsAPI;
+import mods.oggvik.tipsplusplus.TipsAPI;
+import mods.oggvik.tipsplusplus.TipsPlusPlus;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
@@ -73,7 +73,7 @@ public class SimpleTip implements ITip {
     @Override
     public int getCycleTime () {
 
-        return this.cycleTime < 1 ? Tips.CFG.getCycleTime() : this.cycleTime;
+        return this.cycleTime < 1 ? TipsPlusPlus.CFG.getCycleTime() : this.cycleTime;
     }
     
     /**

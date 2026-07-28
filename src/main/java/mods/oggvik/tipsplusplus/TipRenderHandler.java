@@ -1,7 +1,7 @@
-package net.darkhax.tips;
+package mods.oggvik.tipsplusplus;
 
-import net.darkhax.tips.client.TipRenderer;
-import net.darkhax.tips.data.tip.ITip;
+import mods.oggvik.tipsplusplus.client.TipRenderer;
+import mods.oggvik.tipsplusplus.data.tip.ITip;
 import net.minecraft.client.gui.screen.ConnectingScreen;
 import net.minecraft.client.gui.screen.DirtMessageScreen;
 import net.minecraft.client.gui.screen.DisconnectedScreen;
@@ -14,7 +14,7 @@ import net.minecraftforge.client.event.GuiScreenEvent.DrawScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber(modid = Tips.MOD_ID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = TipsPlusPlus.MOD_ID, value = Dist.CLIENT)
 public class TipRenderHandler {
     
     private static long initTime = System.currentTimeMillis();
@@ -28,22 +28,22 @@ public class TipRenderHandler {
         if (screen instanceof DirtMessageScreen || screen instanceof ConnectingScreen || screen instanceof DisconnectedScreen || screen instanceof WorldLoadProgressScreen || screen instanceof WorkingScreen || screen instanceof IngameMenuScreen) {
             
             final long currentTime = System.currentTimeMillis();
-            final int currentCycleTime = tip != null ? tip.getCycleTime() : Tips.CFG.getCycleTime();
+            final int currentCycleTime = tip != null ? tip.getCycleTime() : TipsPlusPlus.CFG.getCycleTime();
             
             if (currentTime - initTime > currentCycleTime) {
                 
-                tip = Tips.API.getRandomTip();
+                tip = TipsPlusPlus.API.getRandomTip();
                 initTime = currentTime;
                 
                 if (tip != null) {
                     
-                    Tips.LOG.debug("Displaying tip {} on screen {}.", tip.getId(), screen.getClass().getSimpleName());
+                    TipsPlusPlus.LOG.debug("Displaying tip {} on screen {}.", tip.getId(), screen.getClass().getSimpleName());
                 }
             }
             
             if (tip != null) {
                 
-                TipRenderer.render(event.getMatrixStack(), screen.width, screen.height, tip, Tips.CFG.getTipCorner());
+                TipRenderer.render(event.getMatrixStack(), screen.width, screen.height, tip, TipsPlusPlus.CFG.getTipCorner());
             }
         }
     }
