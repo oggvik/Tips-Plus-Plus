@@ -1,33 +1,25 @@
-# [Tips++]()
+# [Tips++](https://github.com/oggvik/Tips)
 
-This mod displays useful tips on Minecraft's various loading screens. The tip displayed will be cycled out every 5 seconds. New tips can be added or removed by other mods and modpacks very easily.
+Tips++ displays useful, configurable tips on Minecraft's loading and pause screens. Tips cycle automatically, and other mods and modpacks can add or remove tips.
 
-## Maven Dependency
-If you are using [Gradle](https://gradle.org) to manage your dependencies, add the following into your `build.gradle` file. Make sure to replace the version with the correct one. All versions can be viewed [here](https://maven.blamejared.com/mods/oggvik/tipsplusplus/).
-```gradle
-repositories {
+## Fork status and attribution
 
-    maven { url 'https://maven.blamejared.com' }
-}
+Tips++ is an independently maintained fork of [Tips](https://github.com/Darkhax-Minecraft/Tips), originally created by Darkhax. The Tips++ fork is authored and maintained by **Oggvik**.
 
-dependencies {
+Darkhax and the original Tips project are not affiliated with, do not sponsor, and do not endorse Tips++. References to the original project are provided solely for attribution and to identify the upstream project.
 
-    // Example: compile "mods.oggvik.tipsplusplus:Tips++-1.16.5:4.1.0"
-    compile "mods.oggvik.tipsplusplus:Tips++-MCVERSION:PUT_VERSION_HERE"
-}
+See [FORK_NOTICE.md](FORK_NOTICE.md) for the permanent fork and licensing notice.
+
+## Building
+
+Tips++ targets Minecraft 1.16.5 with Forge and requires JDK 8 for its development environment.
+
+```shell
+./gradlew clean build
 ```
 
-## Jar Signing
+To launch the development client:
 
-As of January 11th 2021 officially published builds will be signed. You can validate the integrity of these builds by comparing their signatures with the public fingerprints.
-
-| Hash   | Fingerprint                                                        |
-|--------|--------------------------------------------------------------------|
-| MD5    | `12F89108EF8DCC223D6723275E87208F`                                 |
-| SHA1   | `46D93AD2DC8ADED38A606D3C36A80CB33EFA69D1`                         |
-| SHA256 | `EBC4B1678BF90CDBDC4F01B18E6164394C10850BA6C4C748F0FA95F2CB083AE5` |
-
-## Sponsors
-<img src="https://nodecraft.com/assets/images/logo-dark.png" width="384" height="90">
-
-This project is sponsored by Nodecraft. Use code [Darkhax](https://nodecraft.com/r/darkhax) for 30% off your first month of service!
+```shell
+./gradlew 'Tips++Client'
+```

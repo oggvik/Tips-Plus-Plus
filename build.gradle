@@ -22,7 +22,6 @@ apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Co
 apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/generic/markdown-git-changelog.gradle'
 apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/minecraft/artifacts.gradle'
 apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/minecraft/maven_local_nomcp.gradle'
-apply from: 'https://raw.githubusercontent.com/MinecraftModDevelopment/Gradle-Collection/master/generic/patreon.gradle'
 
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
@@ -123,23 +122,7 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         include 'META-INF/mods.toml'
 
-        def credits = "Thanks to my supporters on Patreon. "
-
-        def patreonSupporters = new ArrayList<String>()
-
-        for (entry in getPledges()) {
-
-            def pledge = entry.getValue();
-
-            if (pledge.isValid()) {
-
-                patreonSupporters.add(pledge.getDisplayName())
-            }
-        }
-
-        credits += patreonSupporters.join(', ')
-
-        expand 'version': project.version, 'mod_name': mod_name, 'mod_download': mod_download, 'mod_credits': credits, 'mod_authors': mod_authors, 'mod_description': mod_description
+        expand 'version': project.version, 'mod_name': mod_name, 'mod_download': mod_download, 'mod_issues': mod_issues, 'mod_credits': mod_credits, 'mod_authors': mod_authors, 'mod_description': mod_description
     }
 
     from(sourceSets.main.resources.srcDirs) {
@@ -166,7 +149,9 @@ processResources {
     }
 }
 
-curseforge {
+if (project.hasProperty('curse_project') && project.hasProperty('curse_page')) {
+
+    curseforge {
 
     apiKey = findProperty('curse_auth') ?: 0 
     def versions = "${curse_versions}".split(', ')
@@ -174,7 +159,7 @@ curseforge {
 
         id = "${curse_project}"
         releaseType = 'alpha'
-        changelog = getGitChangelog() + "\n\nHuge thanks to my supporters on [Patreon](https://www.patreon.com/Darkhax?MCChangelog?${mod_name})\n\n" + getPledgeLog()
+        changelog = getGitChangelog() + "\n\nTips++ is an independent fork of Tips, maintained by Oggvik. The original project does not endorse this fork."
         changelogType = 'markdown'
 
         versions.each {
@@ -213,7 +198,7 @@ curseforge {
     }
 }
 
-tasks.getByName("curseforge").doLast {
+    tasks.getByName("curseforge").doLast {
     
     try {
     
@@ -238,6 +223,12 @@ tasks.getByName("curseforge").doLast {
     catch (IOException e) {
         println 'Failed to push to the Discord webhook.'
     }
+    }
+
+}
+else {
+
+    tasks.getByName("curseforge").enabled = false
 }
 
 task updateVersionTracker {
