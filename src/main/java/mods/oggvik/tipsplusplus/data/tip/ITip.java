@@ -1,6 +1,6 @@
-package net.darkhax.tips.data.tip;
+package mods.oggvik.tipsplusplus.data.tip;
 
-import net.darkhax.tips.Tips;
+import mods.oggvik.tipsplusplus.TipsPlusPlus;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
@@ -39,6 +39,6 @@ public interface ITip {
      */
     default int getCycleTime () {
         
-        return Tips.CFG.getCycleTime();
+        return TipsPlusPlus.CFG.getCycleTime();
     }
 }

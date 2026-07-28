@@ -1,4 +1,4 @@
-package net.darkhax.tips.gui;
+package mods.oggvik.tipsplusplus.gui;
 
 import java.util.Collections;
 import java.util.List;

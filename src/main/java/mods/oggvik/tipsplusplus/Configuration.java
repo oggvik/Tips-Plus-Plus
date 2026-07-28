@@ -1,9 +1,9 @@
-package net.darkhax.tips;
+package mods.oggvik.tipsplusplus;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.darkhax.tips.client.TipCorner;
+import mods.oggvik.tipsplusplus.client.TipCorner;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;

@@ -1,4 +1,4 @@
-package net.darkhax.tips.data.tip;
+package mods.oggvik.tipsplusplus.data.tip;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,7 +12,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import net.darkhax.bookshelf.serialization.Serializers;
-import net.darkhax.tips.Tips;
+import mods.oggvik.tipsplusplus.TipsPlusPlus;
 import net.minecraft.client.resources.ReloadListener;
 import net.minecraft.profiler.IProfiler;
 import net.minecraft.resources.IResource;
@@ -28,8 +28,8 @@ public class TipReloadListener extends ReloadListener<Map<ResourceLocation, ITip
     @Override
     protected void apply (Map<ResourceLocation, ITip> data, IResourceManager resources, IProfiler profiler) {
         
-        Tips.LOG.info("Read {} tips.", data.size());
-        Tips.API.updateTips(data);
+        TipsPlusPlus.LOG.info("Read {} tips.", data.size());
+        TipsPlusPlus.API.updateTips(data);
     }
     
     @Override
@@ -53,13 +53,13 @@ public class TipReloadListener extends ReloadListener<Map<ResourceLocation, ITip
                         
                         if (!CraftingHelper.processConditions(json, "conditions")) {
                             
-                            Tips.LOG.debug("Skipping tip {} from {} as one or more of it's conditions were not met.", entryId, candidate);
+                            TipsPlusPlus.LOG.debug("Skipping tip {} from {} as one or more of it's conditions were not met.", entryId, candidate);
                         }
                         
                         else {
                             
                             final ResourceLocation tipType = Serializers.RESOURCE_LOCATION.read(json, "type", SimpleTip.TYPE_ID);
-                            final ITipSerializer<?> serializer = Tips.API.getTipSerializer(tipType);
+                            final ITipSerializer<?> serializer = TipsPlusPlus.API.getTipSerializer(tipType);
                             
                             if (serializer != null) {
                                 
@@ -72,13 +72,13 @@ public class TipReloadListener extends ReloadListener<Map<ResourceLocation, ITip
                                 
                                 else {
                                     
-                                    Tips.LOG.debug("Skipping tip {} from {}. Serializer {} returned null.", entryId, candidate, tipType);
+                                    TipsPlusPlus.LOG.debug("Skipping tip {} from {}. Serializer {} returned null.", entryId, candidate, tipType);
                                 }
                             }
                             
                             else {
                                 
-                                Tips.LOG.error("Could not read tip {} from {}. Serializer {} does not exist!", entryId, candidate, tipType);
+                                TipsPlusPlus.LOG.error("Could not read tip {} from {}. Serializer {} does not exist!", entryId, candidate, tipType);
                             }
                         }
                     }
@@ -87,7 +87,7 @@ public class TipReloadListener extends ReloadListener<Map<ResourceLocation, ITip
             
             catch (final Exception e) {
                 
-                Tips.LOG.error("Unable to read tip of {} from {}.", entryId, candidate, e);
+                TipsPlusPlus.LOG.error("Unable to read tip of {} from {}.", entryId, candidate, e);
             }
         }
         

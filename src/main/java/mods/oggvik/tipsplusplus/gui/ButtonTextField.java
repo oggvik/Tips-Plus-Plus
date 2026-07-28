@@ -1,4 +1,4 @@
-package net.darkhax.tips.gui;
+package mods.oggvik.tipsplusplus.gui;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 

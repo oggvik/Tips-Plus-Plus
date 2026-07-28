@@ -1,4 +1,4 @@
-package net.darkhax.tips;
+package mods.oggvik.tipsplusplus;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -9,16 +9,16 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.ImmutableMap;
 
-import net.darkhax.tips.data.tip.ITip;
-import net.darkhax.tips.data.tip.ITipSerializer;
-import net.darkhax.tips.data.tip.SimpleTip;
+import mods.oggvik.tipsplusplus.data.tip.ITip;
+import mods.oggvik.tipsplusplus.data.tip.ITipSerializer;
+import mods.oggvik.tipsplusplus.data.tip.SimpleTip;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 
 /**
- * The API for interacting with tips from other mods. Obtainable through {@link Tips#API}.
+ * The API for interacting with tips from other mods. Obtainable through {@link TipsPlusPlus#API}.
  */
 public final class TipsAPI {
     
@@ -85,7 +85,7 @@ public final class TipsAPI {
     @Nullable
     public ITip getRandomTip () {
         
-        final Collection<ITip> tipPool = this.tips.entrySet().stream().filter(e -> Tips.CFG.canLoadTip(e.getKey())).map(e -> e.getValue()).collect(Collectors.toList());
+        final Collection<ITip> tipPool = this.tips.entrySet().stream().filter(e -> TipsPlusPlus.CFG.canLoadTip(e.getKey())).map(e -> e.getValue()).collect(Collectors.toList());
         return tipPool.isEmpty() ? NO_TIPS : tipPool.stream().skip((int) (tipPool.size() * Math.random())).findFirst().orElse(null);
     }
     

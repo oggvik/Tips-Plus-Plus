@@ -1,9 +1,9 @@
-# [Tips]()
+# [Tips++]()
 
 This mod displays useful tips on Minecraft's various loading screens. The tip displayed will be cycled out every 5 seconds. New tips can be added or removed by other mods and modpacks very easily.
 
 ## Maven Dependency
-If you are using [Gradle](https://gradle.org) to manage your dependencies, add the following into your `build.gradle` file. Make sure to replace the version with the correct one. All versions can be viewed [here](https://maven.blamejared.com/net/darkhax/openloader/).
+If you are using [Gradle](https://gradle.org) to manage your dependencies, add the following into your `build.gradle` file. Make sure to replace the version with the correct one. All versions can be viewed [here](https://maven.blamejared.com/mods/oggvik/tipsplusplus/).
 ```gradle
 repositories {
 
@@ -12,8 +12,8 @@ repositories {
 
 dependencies {
 
-    // Example: compile "net.darkhax.tips:Tips-1.16.4:3.0.3"
-    compile "net.darkhax.tips:Tips-MCVERSION:PUT_VERSION_HERE"
+    // Example: compile "mods.oggvik.tipsplusplus:Tips++-1.16.5:4.1.0"
+    compile "mods.oggvik.tipsplusplus:Tips++-MCVERSION:PUT_VERSION_HERE"
 }
 ```
 

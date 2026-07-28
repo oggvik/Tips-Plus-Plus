@@ -1,12 +1,12 @@
-package net.darkhax.tips;
+package mods.oggvik.tipsplusplus;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.darkhax.tips.data.tip.SimpleTip;
-import net.darkhax.tips.data.tip.TipReloadListener;
-import net.darkhax.tips.gui.TipsListScreen;
+import mods.oggvik.tipsplusplus.data.tip.SimpleTip;
+import mods.oggvik.tipsplusplus.data.tip.TipReloadListener;
+import mods.oggvik.tipsplusplus.gui.TipsListScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.IReloadableResourceManager;
 import net.minecraftforge.api.distmarker.Dist;
@@ -18,17 +18,17 @@ import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.network.FMLNetworkConstants;
 
-@Mod(Tips.MOD_ID)
-public class Tips {
+@Mod(TipsPlusPlus.MOD_ID)
+public class TipsPlusPlus {
     
     public static final String MOD_ID = "tips";
-    public static final String MOD_NAME = "Tips";
+    public static final String MOD_NAME = "Tips++";
     public static final Logger LOG = LogManager.getLogger(MOD_NAME);
     
     public static final TipsAPI API = new TipsAPI();
     public static final Configuration CFG = new Configuration();
     
-    public Tips() {
+    public TipsPlusPlus() {
         
         final ModLoadingContext ctx = ModLoadingContext.get();
         ctx.registerExtensionPoint(ExtensionPoint.DISPLAYTEST, () -> Pair.of( () -> FMLNetworkConstants.IGNORESERVERONLY, (a, b) -> true));
@@ -37,7 +37,7 @@ public class Tips {
             
             ctx.registerConfig(Type.CLIENT, CFG.getSpec());
             ctx.registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY, () -> TipsListScreen::factory);
-            Tips.initClient();
+            TipsPlusPlus.initClient();
         }
     }
     

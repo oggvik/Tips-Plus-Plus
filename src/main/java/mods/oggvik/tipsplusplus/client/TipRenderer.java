@@ -1,10 +1,10 @@
-package net.darkhax.tips.client;
+package mods.oggvik.tipsplusplus.client;
 
 import java.util.List;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 
-import net.darkhax.tips.data.tip.ITip;
+import mods.oggvik.tipsplusplus.data.tip.ITip;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.IReorderingProcessor;

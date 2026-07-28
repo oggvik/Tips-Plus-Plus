@@ -1,11 +1,11 @@
-package net.darkhax.tips.gui;
+package mods.oggvik.tipsplusplus.gui;
 
 import java.util.Locale;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 
-import net.darkhax.tips.Tips;
-import net.darkhax.tips.data.tip.ITip;
+import mods.oggvik.tipsplusplus.TipsPlusPlus;
+import mods.oggvik.tipsplusplus.data.tip.ITip;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.list.AbstractOptionList;
 import net.minecraft.util.text.TextFormatting;
@@ -27,9 +27,9 @@ public class TipsList extends AbstractOptionList<ListEntry> {
         
         this.clearEntries();
         this.setScrollAmount(0d);
-        for (final ITip tip : Tips.API.getTips().values()) {
+        for (final ITip tip : TipsPlusPlus.API.getTips().values()) {
             
-            if ((showDisabled || Tips.CFG.canLoadTip(tip.getId())) && this.matchSearch(tip, searchInput)) {
+            if ((showDisabled || TipsPlusPlus.CFG.canLoadTip(tip.getId())) && this.matchSearch(tip, searchInput)) {
                 
                 this.addEntry(new ListEntryTip(this.minecraft, tip));
             }
